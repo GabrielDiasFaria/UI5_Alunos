@@ -1,0 +1,16 @@
+{
+  "authenticationMethod": "none",
+  "routes": [
+     {
+      "authenticationType": "none",
+      "csrfProtection": false,
+      "source": "^/sap/opu/odata/SAP/ZT55_35_OVLY_SRV/",
+      "destination": "ovly"
+    },
+    {
+      "source": "^(.*)$",
+      "target": "$1",
+      "service": "html5-apps-repo-rt"
+    }
+  ]
+}

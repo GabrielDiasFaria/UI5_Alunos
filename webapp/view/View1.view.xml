@@ -1,0 +1,125 @@
+<mvc:View xmlns:form="sap.ui.layout.form"
+    controllerName="ovly.fiori35.alunos.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:ndc = "sap.ndc"
+    xmlns:f = "sap.ui.layout.form"
+    displayBlock="true"
+    xmlns="sap.m">
+
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+                <Page id="page" title="{i18n>title}">                                        
+                    <content>
+                        <ndc:BarcodeScannerButton width="100%" busy="false" visible="false">
+                        </ndc:BarcodeScannerButton>
+
+                        <f:SimpleForm >
+                            <Panel>
+                                <headerToolbar>
+                                    <OverflowToolbar>
+                                        <ToolbarSpacer />
+                                        <Button text="Clear" icon="sap-icon://clear-filter" type="Transparent" press="onClearStudent"></Button>
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <content>
+                                    <Label
+                                        text="Id"
+                                        labelFor="input-id"
+                                        design="Bold" visible="false" />
+                                    <Input placeholder="Id" id="input-id" value="{/Id}" editable="false" />
+
+                                    <Label
+                                        text="Name"
+                                        labelFor="input-name"
+                                        design="Bold" />
+                                    <Input placeholder="Name" id="input-name" value="{/FirstName}" />
+
+                                    <Label
+                                        text="Lastname"
+                                        labelFor="input-lastname"
+                                        design="Bold" />
+                                    <Input placeholder="LastName" id="input-lastname" value="{/LastName}" />
+
+                                    <Label
+                                        text="Date"
+                                        labelFor="input-lastname"
+                                        design="Bold" />
+                                    <DatePicker id="input-date" placeholder="01/01/2020" displayFormat="short" dateValue="{BirthDate}"></DatePicker>
+
+                                </content>
+                            </Panel>
+                        </f:SimpleForm >
+
+                        <!-- <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region"> -->
+                        <Panel expandable="true" expand="false">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <Title text="List - Alunos"/>
+                                </OverflowToolbar>
+                            </headerToolbar>
+
+                            <content>
+                                <SearchField placeholder="Buscar Aluno" search="onSearch" />
+                                <List 
+                                    id="list-students" 
+                                    mode="SingleSelect" 
+                                    items="{/Students}" 
+                                    selectionChange="onSelectionChange" 
+                                    includeItemInSelection="true"
+                                    growing="true"
+                                    growingScrollToLoad="true"
+                                    growingThreshold="5"
+                                >
+                                    <items>
+                                        <StandardListItem  
+                                            title="{FirstName}"
+                                            description="{LastName}"
+                                            icon="sap-icon://customer"
+                                            info="{path: 'BirthDate', type: 'sap.ui.model.type.DateTime', formatOptions: { style: 'short' }}"
+                                            iconInset="false"                                              
+                                        >
+                                            
+                                        </StandardListItem>
+
+                                        <!-- <StandardListItem
+                                            id="Daniel"
+                                            title="Daniel"
+                                            description="Dias"
+                                            icon="sap-icon://customer"
+                                            info="12/04/1992"
+                                            iconInset="false"  /> -->
+                                    </items>
+                                </List>
+                            </content>
+                        </Panel>
+                    </content>
+
+                    <footer>
+                        <Bar >
+                            <contentLeft>
+                                <Button 
+                                    text="Delete" 
+                                    icon="sap-icon://delete" 
+                                    type="Reject" 
+                                    press="onDeleteStudent"/>                                 
+                            </contentLeft>
+                            <contentMiddle>
+                                <!-- <Button text="Clear" icon="sap-icon://clear-filter" type="Default"></Button> -->
+                            </contentMiddle>
+                            <contentRight>
+                                <Button 
+                                    text="Save" 
+                                    icon="sap-icon://save" 
+                                    type="Emphasized"
+                                    press="onSaveStudent" /> 
+                            </contentRight>
+                        </Bar>
+                    </footer>
+                    
+                </Page>
+			</pages>
+		</App>
+	</Shell>
+
+</mvc:View>
